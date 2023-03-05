@@ -23,51 +23,69 @@
 
 int main()
 {
-	srand(time(NULL));
+	srand(time(nullptr));
 
-	unsigned short countOfThrow;
-	unsigned short countOfOne = 0,
-		countOfTwo = 0,
-		countOfThree = 0,
-		countOfFour = 0,
-		countOfFive = 0,
-		countOfSix = 0;
+	unsigned int countOfThrow;
+
+	unsigned int count[6] = { 0,0,0,0,0,0 };
+	unsigned int number[6] = { 1, 2, 3, 4, 5, 6 };
+
+	unsigned int max_count = count[0];
+	unsigned int min_count = count[0];
+
+	std::string indexNumbers[] = { "First", "Second", "Third", "Fourth", "Fifth", "Sixth" };
 
 	std::cout << "Input count of throw (1 to 6): ";
 	std::cin >> countOfThrow;
 	std::cout << std::endl;
 
-	for (int index = 1; index <= countOfThrow; index++)
+	for (int newThrow = 0; newThrow < countOfThrow; newThrow++)
 	{
-		short number = rand() % 6 + 1;
+		number[newThrow] = rand() % 6 + 1;
 
-		std::cout << " " << index << ". throw is " << number << std::endl;
+		std::cout << indexNumbers[newThrow] << " throw is: " << number[newThrow] << std::endl;
 
-		if (number == 1)
-			countOfOne++;
-		else if (number == 2)
-			countOfTwo++;
-		else if (number == 3)
-			countOfThree++;
-		else if (number == 4)
-			countOfFour++;
-		else if (number == 5)
-			countOfFive++;
-		else if (number == 6)
-			countOfSix++;
+		if (number[newThrow] == 1)
+			count[0]++;
 
+		if (number[newThrow] == 2)
+			count[1]++;
+
+		if (number[newThrow] == 3)
+			count[2]++;
+
+		if (number[newThrow] == 4)
+			count[3]++;
+
+		if (number[newThrow] == 5)
+			count[4]++;
+
+		if (number[newThrow] == 6)
+			count[5]++;
 	}
 
-	std::cout << "\n--- Count of hits on each side ---\n";
+	std::cout << std::endl;
+	std::cout << "Count of throw of each sides:\n";
+	std::cout << std::endl;
 
-	std::cout << " Count of number 1: " << countOfOne << std::endl;
-	std::cout << " Count of number 2: " << countOfTwo << std::endl;
-	std::cout << " Count of number 3: " << countOfThree << std::endl;
-	std::cout << " Count of number 4: " << countOfFour << std::endl;
-	std::cout << " Count of number 5: " << countOfFive << std::endl;
-	std::cout << " Count of number 6: " << countOfSix << std::endl;
+	std::cout << "Count of 1: " << count[0] << std::endl;
+	std::cout << "Count of 2: " << count[1] << std::endl;
+	std::cout << "Count of 3: " << count[2] << std::endl;
+	std::cout << "Count of 4: " << count[3] << std::endl;
+	std::cout << "Count of 5: " << count[4] << std::endl;
+	std::cout << "Count of 6: " << count[5] << std::endl;
 
+	for (int i = 1; i < 6; i++)
+		if (count[i] > max_count)
+			max_count = count[i];
 
+	for (int i = 1; i < 6; i++)
+		if (count[i] < min_count)
+			min_count = count[i];
+
+	std::cout << std::endl;
+	std::cout << "Maximum number is: " << max_count << "\n";
+	std::cout << "Minimum number is: " << min_count << "\n";
 
 	return 0;
 }
