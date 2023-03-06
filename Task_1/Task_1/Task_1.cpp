@@ -1,4 +1,5 @@
 #include <iostream>
+#include <string>
 
 /*
 	
@@ -27,7 +28,7 @@ int main()
 
 	unsigned int countOfThrow;
 
-	unsigned int count[6] = { 0,0,0,0,0,0 };
+	unsigned int count[6] = { 0, 0, 0, 0, 0, 0 };
 	unsigned int number[6] = { 1, 2, 3, 4, 5, 6 };
 
 	unsigned int max_count = count[0];
@@ -75,13 +76,13 @@ int main()
 	std::cout << "Count of 5: " << count[4] << std::endl;
 	std::cout << "Count of 6: " << count[5] << std::endl;
 
-	for (int i = 1; i < 6; i++)
-		if (count[i] > max_count)
-			max_count = count[i];
+	for (int index = 1; index < 6; index++)
+		if (count[index] > max_count)
+			max_count = count[index];
 
-	for (int i = 1; i < 6; i++)
-		if (count[i] < min_count)
-			min_count = count[i];
+	for (int index = 1; index < 6; index++)
+		if (count[index] < min_count)
+			min_count = count[index];
 
 	std::cout << std::endl;
 	std::cout << "Maximum number is: " << max_count << "\n";
